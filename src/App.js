@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import MainPage from './pages/mainPage/MainPage'
+import PhotosPage from './pages/photosPage/PhotosPage'
+import LayoutNavBar from './components/hoc/LayoutNavBar'
+import LayoutBackBtn from './components/hoc/LayoutBackBtn'
+import PhotoMoreInfo from './components/PhotoMoreInfo'
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<LayoutNavBar/>}>
+          <Route index element={<MainPage/>}/>
+        </Route>
 
-export default App;
+       <Route path='' element={<LayoutBackBtn/>}>
+          <Route path='/photos' element={<PhotosPage/>}/>
+          <Route path='/photos/:id' element={<PhotoMoreInfo/>}/>
+       </Route>
+
+       
+
+        <Route path='*' element={<h3>404 not found...</h3>}/>
+      </Routes>
+    </BrowserRouter>
+  )
+}

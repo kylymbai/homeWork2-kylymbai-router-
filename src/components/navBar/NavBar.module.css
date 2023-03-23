@@ -1,0 +1,13 @@
+.links {
+    display: flex;
+}
+
+.li {
+    list-style-type: none;
+    margin-right: 18px;
+}
+
+.link {
+    color: rgb(5, 70, 49);
+    text-decoration: none;
+}
